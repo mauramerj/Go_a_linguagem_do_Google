@@ -27,6 +27,7 @@ func main() {
 	// }
 	exibeIntroducao()
 	//nome, idade := devolveNomeEIdade()
+	exibeNomes()
 
 	for {
 
@@ -93,7 +94,14 @@ func leComando() int {
 
 func iniciaMonitoramento() {
 	fmt.Println("Monitorando...")
-	site := "https://random-status-code.herokuapp.com"
+	var sites [4]string
+	sites[0] = "https://random-status-code.herokuapp.com"
+	sites[1] = "https://www.alura.combr"
+	sites[2] = "https://google.com"
+	site := "https://www.globo.com"
+
+	fmt.Println(sites)
+
 	resp, _ := http.Get(site)
 	//fmt.Println(resp)
 	if resp.StatusCode == 200 {
@@ -101,5 +109,9 @@ func iniciaMonitoramento() {
 	} else {
 		fmt.Println("Site: ", site, " está down. Status Code: ", resp.StatusCode)
 	}
+}
 
+func exibeNomes() {
+	nomes := []string{"Maurício", "Maria", "Pietro"}
+	fmt.Println(nomes)
 }
