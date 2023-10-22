@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"net/http"
 	"os"
 )
 
@@ -25,39 +26,51 @@ func main() {
 	// 	fmt.Println("Comando desconhecido")
 	// }
 	exibeIntroducao()
+	//nome, idade := devolveNomeEIdade()
 
-	exibeMenu()
+	for {
 
-	comando := leComando()
+		exibeMenu()
 
-	switch comando {
+		comando := leComando()
 
-	case 1:
-		fmt.Println("Monitorando...")
+		switch comando {
 
-	case 2:
-		fmt.Println("Logs...")
+		case 1:
+			iniciaMonitoramento()
 
-	case 0:
-		fmt.Println("Saindo do programa...")
-		os.Exit(0)
+		case 2:
+			fmt.Println("Logs...")
 
-	default:
-		fmt.Println("Comando desconhecido")
-		os.Exit(-1)
+		case 0:
+			fmt.Println("Saindo do programa...")
+			os.Exit(0)
+
+		default:
+			fmt.Println("Comando desconhecido")
+			os.Exit(-1)
+		}
 	}
-
 }
+
+// func devolveNomeEIdade() (string, int) {
+// 	nome := "Maurício"
+// 	idade := 43
+// 	return nome, idade
+// }
 
 func exibeIntroducao() {
 	// Diferentes formas de declarar variavel
 	nome := "Maurício"
-	var versao float64 = 1.2
+	idade := 43
+	fmt.Print("Olá, me chamo ", nome, "e estou com ", idade, " de idade. ")
+
+	var versao float64 = 1.5
 	//var idade = 43
 
-	fmt.Print("Olá Sr(a). ", nome)
+	//fmt.Print("Olá Sr(a). ", nome)
 	//fmt.Println("Idade", idade)
-	fmt.Println(", a versão do sistema em uso é: ", versao)
+	fmt.Println("A versão do sistema em uso é: ", versao)
 	fmt.Println("")
 }
 
@@ -73,7 +86,20 @@ func leComando() int {
 	//fmt.Scanf("%d", &comando)
 	fmt.Scan(&comandoLido)
 	//fmt.Println("O endereço onde a variavel comando foi alocada é: ", &comando)
-	fmt.Println("O comando esolhido foi:", comandoLido)
+	fmt.Println("O comando escolhido foi:", comandoLido)
 
 	return comandoLido
+}
+
+func iniciaMonitoramento() {
+	fmt.Println("Monitorando...")
+	site := "https://random-status-code.herokuapp.com"
+	resp, _ := http.Get(site)
+	//fmt.Println(resp)
+	if resp.StatusCode == 200 {
+		fmt.Println("Site: ", site, " está carregando com sucesso!")
+	} else {
+		fmt.Println("Site: ", site, " está down. Status Code: ", resp.StatusCode)
+	}
+
 }
