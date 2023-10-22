@@ -34,13 +34,27 @@ func main() {
 	fmt.Println("O endereço onde a variavel comando foi alocada é: ", &comando)
 	fmt.Println("O comando esolhido foi:", comando)
 
-	if comando == 1 {
+	// if comando == 1 {
+	// 	fmt.Println("Monitorando...")
+	// } else if comando == 2 {
+	// 	fmt.Println("Logs...")
+	// } else if comando == 0 {
+	// 	fmt.Println("Saindo do programa...")
+	// } else {
+	// 	fmt.Println("Comando desconhecido")
+	// }
+
+	switch comando {
+	case 1:
 		fmt.Println("Monitorando...")
-	} else if comando == 2 {
+
+	case 2:
 		fmt.Println("Logs...")
-	} else if comando == 0 {
-		fmt.Println("aindo do programa...")
-	} else {
+
+	case 0:
+		fmt.Println("Saindo do programa...")
+
+	default:
 		fmt.Println("Comando desconhecido")
 	}
 
