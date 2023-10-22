@@ -45,6 +45,7 @@ func main() {
 	// }
 
 	switch comando {
+
 	case 1:
 		fmt.Println("Monitorando...")
 
