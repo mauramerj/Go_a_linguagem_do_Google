@@ -2,19 +2,10 @@ package main
 
 import (
 	"fmt"
+	"os"
 )
 
 func main() {
-
-	// Diferentes formas de declarar variavel
-	nome := "Maurício"
-	var versao float64 = 1.2
-	//var idade = 43
-
-	fmt.Print("Olá Sr(a). ", nome)
-	//fmt.Println("Idade", idade)
-	fmt.Println(", a versão do sistema em uso é: ", versao)
-	fmt.Println("")
 
 	//fmt.Println("O tipo da variável nome é: ", reflect.TypeOf(nome))
 	//fmt.Println("O tipo da variável idade é: ", reflect.TypeOf(idade))
@@ -23,16 +14,6 @@ func main() {
 	/*
 	** Inicio do sistema
 	 */
-
-	fmt.Println("1 - Monitorar sites")
-	fmt.Println("2 - Exibir logs")
-	fmt.Println("0 - Sair")
-
-	var comando int
-	//fmt.Scanf("%d", &comando)
-	fmt.Scan(&comando)
-	fmt.Println("O endereço onde a variavel comando foi alocada é: ", &comando)
-	fmt.Println("O comando esolhido foi:", comando)
 
 	// if comando == 1 {
 	// 	fmt.Println("Monitorando...")
@@ -43,6 +24,11 @@ func main() {
 	// } else {
 	// 	fmt.Println("Comando desconhecido")
 	// }
+	exibeIntroducao()
+
+	exibeMenu()
+
+	comando := leComando()
 
 	switch comando {
 
@@ -54,9 +40,40 @@ func main() {
 
 	case 0:
 		fmt.Println("Saindo do programa...")
+		os.Exit(0)
 
 	default:
 		fmt.Println("Comando desconhecido")
+		os.Exit(-1)
 	}
 
+}
+
+func exibeIntroducao() {
+	// Diferentes formas de declarar variavel
+	nome := "Maurício"
+	var versao float64 = 1.2
+	//var idade = 43
+
+	fmt.Print("Olá Sr(a). ", nome)
+	//fmt.Println("Idade", idade)
+	fmt.Println(", a versão do sistema em uso é: ", versao)
+	fmt.Println("")
+}
+
+func exibeMenu() {
+	fmt.Println("1 - Monitorar sites")
+	fmt.Println("2 - Exibir logs")
+	fmt.Println("0 - Sair")
+
+}
+
+func leComando() int {
+	var comandoLido int
+	//fmt.Scanf("%d", &comando)
+	fmt.Scan(&comandoLido)
+	//fmt.Println("O endereço onde a variavel comando foi alocada é: ", &comando)
+	fmt.Println("O comando esolhido foi:", comandoLido)
+
+	return comandoLido
 }
