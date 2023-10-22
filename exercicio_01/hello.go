@@ -10,7 +10,8 @@ func main() {
 	nome := "Maurício"
 	var versao float64 = 1.2
 	//var idade = 43
-	fmt.Print("Olá Sr. ", nome)
+
+	fmt.Print("Olá Sr(a). ", nome)
 	//fmt.Println("Idade", idade)
 	fmt.Println(", a versão do sistema em uso é: ", versao)
 	fmt.Println("")
@@ -32,5 +33,15 @@ func main() {
 	fmt.Scan(&comando)
 	fmt.Println("O endereço onde a variavel comando foi alocada é: ", &comando)
 	fmt.Println("O comando esolhido foi:", comando)
+
+	if comando == 1 {
+		fmt.Println("Monitorando...")
+	} else if comando == 2 {
+		fmt.Println("Logs...")
+	} else if comando == 0 {
+		fmt.Println("aindo do programa...")
+	} else {
+		fmt.Println("Comando desconhecido")
+	}
 
 }
